@@ -15,3 +15,11 @@
  */
 
 @import "bootstrap";
+
+.field_with_errors {
+  display: inline-block;
+
+  input {
+    border: 2px solid red;
+  }
+}

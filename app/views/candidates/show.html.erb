@@ -1,0 +1,11 @@
+<% if @candidate  %>
+  <h1><%= @candidate.name %></h1>
+
+  <ul>
+    <li>年紀：<%= @candidate.age %></li>
+    <li>黨派：<%= @candidate.party %></li>
+    <li>政見：<%= @candidate.policy %></li>
+  </ul>
+<% else %>
+  <h1>沒有這個人</h1>
+<% end %>
