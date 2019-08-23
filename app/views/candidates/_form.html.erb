@@ -1,0 +1,33 @@
+<% if candidate.errors.any? %>
+  <ul>
+  <% candidate.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(candidate) do |form| %>
+  <div class="box">
+    <div class="candidate_field">
+      <%= form.label :name, '姓名' %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="candidate_field">
+      <%= form.label :party, '黨派' %>
+      <%= form.text_field :party %>
+    </div>
+
+    <div class="candidate_field">
+      <%= form.label :age, '年紀' %>
+      <%= form.text_field :age %>
+    </div>
+
+    <div class="candidate_field">
+      <%= form.label :policy, '政策' %>
+      <%= form.text_area :policy %>
+    </div>
+
+    <%= form.submit class: 'btn btn-success btn-lg' %>
+  </div>
+<% end %>

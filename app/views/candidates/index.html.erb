@@ -1,10 +1,12 @@
-<%= flash[:notice] %>
-
 <h1>候選人列表</h1>
 
 <ul>
 <% @candidates.each do |candidate| %>
-  <li><%= link_to candidate.name, candidate_path(candidate.id) %></li>
+  <li>
+    <%= link_to candidate.name, candidate_path(candidate.id) %>
+    <%= link_to "編輯", edit_candidate_path(candidate.id), class: 'btn bg-xs btn-success' %>
+    <%= link_to "刪除", candidate_path(candidate.id), class: 'btn bg-xs btn-danger', method: 'delete', data: { confirm: '確定嗎?!'} %>
+  </li>
 <% end %>
 </ul>
 
