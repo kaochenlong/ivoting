@@ -1,8 +1,8 @@
 class CandidatesController < ApplicationController
-  before_action :find_candidate, only: [:show, :edit, :update, :destroy]
+  before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.all.order(vote: :desc)
   end
 
   def show
@@ -36,6 +36,19 @@ class CandidatesController < ApplicationController
   def destroy
     @candidate.destroy
     redirect_to root_path, notice: "資料刪除成功!"
+  end
+
+  def vote
+    v = @candidate.vote || 0
+    # @candidate.update(vote: v + 1)
+
+    # vv = VoteLog.new(candidate_id: @candidate.id, ip: remote_ip)
+    # vv.save
+
+    # VoteLog.create(candidate_id: @candidate.id, ip: remote_ip)
+    VoteLog.create(candidate: @candidate, ip_address: request.remote_ip)
+
+    redirect_to root_path, notice: '投票成功!'
   end
 
   private
