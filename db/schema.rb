@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_031945) do
+ActiveRecord::Schema.define(version: 2019_08_23_065932) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_031945) do
     t.text "policy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "degree"
+    t.integer "vote", default: 0
   end
 
 end

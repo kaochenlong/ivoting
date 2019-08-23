@@ -3,6 +3,7 @@
 <ul>
 <% @candidates.each do |candidate| %>
   <li>
+    (<%= candidate.vote %>票)
     <%= link_to candidate.name, candidate_path(candidate.id) %>
     <%= link_to "編輯", edit_candidate_path(candidate.id), class: 'btn bg-xs btn-success' %>
     <%= link_to "刪除", candidate_path(candidate.id), class: 'btn bg-xs btn-danger', method: 'delete', data: { confirm: '確定嗎?!'} %>

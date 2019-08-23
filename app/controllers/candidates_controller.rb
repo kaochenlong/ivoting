@@ -45,6 +45,6 @@ class CandidatesController < ApplicationController
 
   # Strong Parameters
   def candidate_params
-    params.require(:candidate).permit(:name, :age, :policy, :party)
+    params.require(:candidate).permit(:name, :age, :policy, :party, :degree)
   end
 end
