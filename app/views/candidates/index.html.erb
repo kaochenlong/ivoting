@@ -1,5 +1,7 @@
 <h1>候選人列表</h1>
 
+<%= paginate @candidates, theme: 'twitter-bootstrap-4' %>
+
 <ul>
 <% @candidates.each do |candidate| %>
   <li>
