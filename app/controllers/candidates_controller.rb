@@ -40,9 +40,16 @@ class CandidatesController < ApplicationController
 
   def vote
     if user_signed_in?
-      VoteLog.create(candidate: @candidate, ip_address: request.remote_ip)
 
-      redirect_to root_path, notice: '投票成功!'
+      if VoteLog.find_by(user: current_user, candidate: @candidate)
+        message = "已投過此候選人"
+      else
+        current_user.vote_logs.create(candidate: @candidate,
+                                      ip_address: request.remote_ip)
+        message = "投票成功"
+      end
+
+      redirect_to root_path, notice: message
     else
       redirect_to root_path, notice: '請先登入會員!'
     end
