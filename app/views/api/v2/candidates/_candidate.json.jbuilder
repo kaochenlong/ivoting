@@ -1,0 +1,1 @@
+json.extract! candidate, :id, :name, :age, :party, :policy
