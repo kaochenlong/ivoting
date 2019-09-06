@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_022747) do
+ActiveRecord::Schema.define(version: 2019_09_06_063310) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2019_09_06_022747) do
     t.integer "vote_logs_count", default: 0
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_candidates_on_deleted_at"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "description"
+    t.boolean "is_available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
