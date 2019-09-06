@@ -44,12 +44,24 @@ RSpec.describe Cart, type: :model do
 
       expect(cart.total_price).to be 400
     end
+
+    it "特別日期全面打 9 折" do
+      # 2/10 打 9 折
+      t = Time.local(2008, 2, 10, 10, 5, 0)
+      Timecop.travel(t)
+
+      cart = Cart.new
+
+      p1 = Product.create(name: 'aa', price: 100)
+      p2 = Product.create(name: 'bb', price: 50)
+
+      3.times { cart.add_item(p1.id) }
+      2.times { cart.add_item(p2.id) }
+
+      expect(cart.total_price).to eq 360
+    end
   end
 
   context "進階功能" do
   end
 end
-
-# -
-# -
-# - 特別活動可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百或滿額免運費）。
