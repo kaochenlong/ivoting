@@ -1,17 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
+  let(:cart) { Cart.new }
+
+  # def cart
+  #   Cart.new
+  # end
+
   context "基本功能" do
     it "可以把商品丟到到購物車裡，然後購物車裡就有東西了。" do
-      cart = Cart.new
       expect(cart.empty?).to be true
+      # expect(cart.empty?).to be_truthy
+      # expect(cart).to be_empty
 
       cart.add_item(1)
       expect(cart.empty?).to be false
     end
 
     it "加相同種類的商品，購買項目（CartItem）不會增加，但商品的數量會改變。" do
-      cart = Cart.new
       3.times { cart.add_item(1) }
       2.times { cart.add_item(2) }
       2.times { cart.add_item(1) }
@@ -21,8 +27,6 @@ RSpec.describe Cart, type: :model do
     end
 
     it "商品可以放到購物車裡，也可以再拿出來。" do
-      cart = Cart.new
-
       p1 = Product.create(name: 'aa', price: 100)
       p2 = Product.create(name: 'bb', price: 50)
 
@@ -34,8 +38,6 @@ RSpec.describe Cart, type: :model do
     end
 
     it "可以計算整台購物車的總消費金額。" do
-      cart = Cart.new
-
       p1 = Product.create(name: 'aa', price: 100)
       p2 = Product.create(name: 'bb', price: 50)
 
@@ -49,8 +51,6 @@ RSpec.describe Cart, type: :model do
       # 2/10 打 9 折
       t = Time.local(2008, 2, 10, 10, 5, 0)
       Timecop.travel(t)
-
-      cart = Cart.new
 
       p1 = Product.create(name: 'aa', price: 100)
       p2 = Product.create(name: 'bb', price: 50)
