@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :candidates do
     member do
       put :vote
+      get :log
     end
   end
 

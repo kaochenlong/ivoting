@@ -1,0 +1,7 @@
+<h1>投票紀錄</h1>
+
+<ul>
+<% @logs.each do |log| %>
+  <li><%= log.user.email %></li>
+<% end %>
+</ul>

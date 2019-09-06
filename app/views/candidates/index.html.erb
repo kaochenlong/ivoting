@@ -18,7 +18,7 @@
         <%= link_to "投票！", vote_candidate_path(candidate), class: 'btn btn-sm btn-warning', method: 'put', data: { confirm: '確認投票?!'} %>
       </td>
       <td>
-        <%= candidate.vote_logs_count %>票
+        <%= link_to "#{candidate.vote_logs_count} 票", log_candidate_path(candidate) %>
       </td>
       <td>
           <%= link_to candidate.name, candidate_path(candidate) %>

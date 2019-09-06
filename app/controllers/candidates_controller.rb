@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote, :log]
 
   def index
     @candidates = Candidate.order(vote: :desc).page(params[:page])
@@ -54,6 +54,10 @@ class CandidatesController < ApplicationController
     else
       redirect_to root_path, notice: '請先登入會員!'
     end
+  end
+
+  def log
+    @logs = @candidate.vote_logs.includes(:user)
   end
 
   private
