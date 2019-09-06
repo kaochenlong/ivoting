@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
   before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
-    @candidates = Candidate.all.order(vote: :desc).page(params[:page]).per(5)
+    @candidates = Candidate.all.order(vote: :desc).page(params[:page]).per(10)
   end
 
   def show

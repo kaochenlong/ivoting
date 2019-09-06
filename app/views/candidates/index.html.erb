@@ -2,16 +2,34 @@
 
 <%= paginate @candidates, theme: 'twitter-bootstrap-4' %>
 
-<ul>
-<% @candidates.each do |candidate| %>
-  <li>
-    <%= link_to "投票給這位！", vote_candidate_path(candidate), class: 'btn btn-xs btn-warning', method: 'put', data: { confirm: '確認投票?!'} %>
-    (<%= candidate.vote_logs_count %>票)
-    <%= link_to candidate.name, candidate_path(candidate) %>
-    <%= link_to "編輯", edit_candidate_path(candidate), class: 'btn bg-xs btn-success' %>
-    <%= link_to "刪除", candidate_path(candidate), class: 'btn bg-xs btn-danger', method: 'delete', data: { confirm: '確定嗎?!'} %>
-  </li>
-<% end %>
-</ul>
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th>投票</th>
+      <th>得票數</th>
+      <th>候選人</th>
+      <th>處理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidates.each do |candidate| %>
+    <tr>
+      <td>
+        <%= link_to "投票！", vote_candidate_path(candidate), class: 'btn btn-sm btn-warning', method: 'put', data: { confirm: '確認投票?!'} %>
+      </td>
+      <td>
+        <%= candidate.vote_logs_count %>票
+      </td>
+      <td>
+          <%= link_to candidate.name, candidate_path(candidate) %>
+      </td>
+      <td>
+        <%= link_to "編輯", edit_candidate_path(candidate), class: 'btn btn-sm btn-success' %>
+        <%= link_to "刪除", candidate_path(candidate), class: 'btn btn-sm btn-danger', method: 'delete', data: { confirm: '確定嗎?!'} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to '新增候選人', new_candidate_path, class: 'btn btn-primary btn-lg' %>
