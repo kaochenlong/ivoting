@@ -57,7 +57,7 @@ class CandidatesController < ApplicationController
   end
 
   def log
-    @logs = @candidate.vote_logs.includes(:user)
+    @users = @candidate.users
   end
 
   private
