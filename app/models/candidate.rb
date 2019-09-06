@@ -1,4 +1,5 @@
 class Candidate < ApplicationRecord
+  paginates_per 10
   has_many :vote_logs
   has_many :users, through: :vote_logs
 

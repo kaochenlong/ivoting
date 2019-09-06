@@ -2,7 +2,7 @@ class CandidatesController < ApplicationController
   before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
-    @candidates = Candidate.all.order(vote: :desc).page(params[:page]).per(10)
+    @candidates = Candidate.order(vote: :desc).page(params[:page])
   end
 
   def show
@@ -41,12 +41,13 @@ class CandidatesController < ApplicationController
   def vote
     if user_signed_in?
 
-      if VoteLog.find_by(user: current_user, candidate: @candidate)
-        message = "已投過此候選人"
-      else
-        current_user.vote_logs.create(candidate: @candidate,
-                                      ip_address: request.remote_ip)
+      log = current_user.vote_logs.new(candidate: @candidate,
+                                       ip_address: request.remote_ip)
+
+      if log.save
         message = "投票成功"
+      else
+        message = log.errors.full_messages.first
       end
 
       redirect_to root_path, notice: message
