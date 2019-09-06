@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_080351) do
+ActiveRecord::Schema.define(version: 2019_09_06_022747) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_080351) do
     t.string "degree"
     t.integer "vote", default: 0
     t.integer "vote_logs_count", default: 0
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_candidates_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
