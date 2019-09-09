@@ -62,7 +62,7 @@ class CandidatesController < ApplicationController
 
   private
   def find_candidate
-    @candidate = Candidate.find_by(id: params[:id])
+    @candidate = Candidate.find(params[:id])
   end
 
   # Strong Parameters

@@ -19,12 +19,6 @@ class ProductsController < ApplicationController
   private
 
   def find_product
-    begin
-      @product = Product.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render :file => "#{Rails.root}/public/404.html",
-             :layout => false,
-             :status => :not_found
-    end
+    @product = Product.find(params[:id])
   end
 end
