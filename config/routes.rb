@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :products
+
   # API
   namespace :api do
     namespace :v2 do
