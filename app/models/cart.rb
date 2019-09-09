@@ -26,6 +26,14 @@ class Cart
     total
   end
 
+  def serialize
+    {
+      "items" => @items.map do |i|
+                   {"product_id" => i.product_id, "quantity" => i.quantity }
+                 end
+    }
+  end
+
   private
   def xmas?
     #....
