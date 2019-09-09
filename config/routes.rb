@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :cart, only: [:show, :destroy]
+
   # API
   namespace :api do
     namespace :v2 do
