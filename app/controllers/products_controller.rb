@@ -10,8 +10,10 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    cart = Cart.new
+    cart = Cart.from_hash(session[:cart9527])
     cart.add_item(@product.id)
+
+    session[:cart9527] = cart.serialize
 
     redirect_to products_path, notice: '已加入購物車'
   end
