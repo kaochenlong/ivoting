@@ -35,13 +35,9 @@ class Cart
 
   def self.from_hash(hash = nil)
     if hash && hash["items"]
-      list = []
-      hash["items"].each do |i|
-        list << CartItem.new(i["product_id"], i["quantity"])
-      end
-      Cart.new(list)
+      new hash["items"].map { |i| CartItem.new(i["product_id"], i["quantity"]) }
     else
-      Cart.new
+      new
     end
   end
 
