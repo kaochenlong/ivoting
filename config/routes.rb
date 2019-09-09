@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :products
+  resources :products do
+    member do
+      put :add_to_cart
+    end
+  end
 
   # API
   namespace :api do
