@@ -1,9 +1,8 @@
-# PORO
 class Cart
   attr_reader :items
 
-  def initialize
-    @items = []
+  def initialize(items = [])
+    @items = items
   end
 
   def empty?
@@ -32,6 +31,18 @@ class Cart
                    {"product_id" => i.product_id, "quantity" => i.quantity }
                  end
     }
+  end
+
+  def self.from_hash(hash = nil)
+    if hash && hash["items"]
+      list = []
+      hash["items"].each do |i|
+        list << CartItem.new(i["product_id"], i["quantity"])
+      end
+      Cart.new(list)
+    else
+      Cart.new
+    end
   end
 
   private
