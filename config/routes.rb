@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resource :cart, only: [:show, :destroy]
+  get '/checkout', to: 'carts#checkout'
 
   # API
   namespace :api do
@@ -24,6 +25,4 @@ Rails.application.routes.draw do
   end
 
   root 'candidates#index'
-
-  # /api/v2/candidates
 end

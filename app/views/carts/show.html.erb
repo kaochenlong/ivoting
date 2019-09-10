@@ -1,31 +1,6 @@
 <h1>購物車 <%= link_to "清空購物車", cart_path, method: 'delete', class: 'btn btn-sm btn-danger', data: {confirm: '確認清空購物車?!'} %></h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>商品名稱</th>
-      <th>數量</th>
-      <th>單價</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_cart.items.each do |item| %>
-    <tr>
-      <td><%= item.product.name %></td>
-      <td><%= item.quantity %></td>
-      <td><%= item.product.price %></td>
-      <td><%= item.total_price %></td>
-    </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3">總價</td>
-      <td><%= current_cart.total_price %></td>
-    </tr>
-  </tfoot>
-</table>
+<%= render 'cart' %>
 
 <%= link_to "繼續選購", products_path, class: 'btn btn-success btn-lg' %>
-<%= link_to "結帳", '#', class: 'btn btn-danger btn-lg' %>
+<%= link_to "結帳", checkout_path, class: 'btn btn-danger btn-lg' %>

@@ -9,6 +9,10 @@ class Cart
     @items.empty?
   end
 
+  def present?
+    !empty?
+  end
+
   def add_item(product_id)
     found_item = @items.find { |i| i.product_id == product_id }
 
