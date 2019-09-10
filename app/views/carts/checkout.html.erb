@@ -1,3 +1,12 @@
 <h1>結帳</h1>
 
-<%= render 'cart' %>
+<%= render 'carts/cart' %>
+
+<%= simple_form_for(@order) do |form| %>
+  <%= form.input :recipient %>
+  <%= form.input :phone %>
+  <%= form.input :address %>
+  <%= form.input :note %>
+
+  <%= form.submit '建立訂單', class: 'btn btn-success btn-lg' %>
+<% end %>

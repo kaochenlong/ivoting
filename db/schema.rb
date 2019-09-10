@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_043339) do
+ActiveRecord::Schema.define(version: 2019_09_10_065919) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "name"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_043339) do
     t.string "phone"
     t.string "address"
     t.text "note"
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

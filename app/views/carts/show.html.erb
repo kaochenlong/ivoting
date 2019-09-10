@@ -1,6 +1,6 @@
 <h1>購物車 <%= link_to "清空購物車", cart_path, method: 'delete', class: 'btn btn-sm btn-danger', data: {confirm: '確認清空購物車?!'} %></h1>
 
-<%= render 'cart' %>
+<%= render 'carts/cart' %>
 
 <%= link_to "繼續選購", products_path, class: 'btn btn-success btn-lg' %>
 <%= link_to "結帳", checkout_path, class: 'btn btn-danger btn-lg' %>

@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, only: [:create] do
+    member do
+      get :payment
+    end
+  end
+
   resource :cart, only: [:show, :destroy]
   get '/checkout', to: 'carts#checkout'
 
