@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, only: [:create] do
+  resources :orders, only: [:index, :show, :create] do
     member do
       get :payment
     end
