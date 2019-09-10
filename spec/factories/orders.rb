@@ -5,6 +5,7 @@ FactoryBot.define do
     phone { Faker::PhoneNumber.cell_phone }
     address { Faker::Address.full_address }
     status { "pending" }
+    user { create(:user) }
 
     trait :invalid do
       phone { nil }

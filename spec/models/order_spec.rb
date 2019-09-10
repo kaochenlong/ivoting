@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  it "訂單需要有使用者" do
-    #
+  describe "訂單的使用者" do
+    it "沒有使用者" do
+      order = build(:order, user: nil)
+      expect(order).not_to be_valid
+    end
   end
 
   describe "驗證收件人相關資料" do
@@ -11,6 +14,8 @@ RSpec.describe Order, type: :model do
         order = build(:order)
         expect(order).to be_valid
       end
+
+      # specify { expect(build(:order)).to be_valid }
     end
 
     context "無效資料" do
