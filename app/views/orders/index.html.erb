@@ -15,7 +15,11 @@
       <td><%= order.id %></td>
       <td><%= order.created_at %></td>
       <td><%= order.status %></td>
-      <td><%= link_to "詳細內容", order, class: 'btn btn-success btn-sm' %></td>
+      <td>
+        <%= link_to "詳細內容", order, class: 'btn btn-success btn-sm' %>
+        <%= link_to "付款", '#', class: 'btn btn-danger btn-sm' if order.may_pay? %>
+        <%= link_to "退貨", '#', class: 'btn btn-info btn-sm' if order.may_refund? %>
+      </td>
     </tr>
     <% end %>
   </tbody>
