@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_09_16_025253) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "candidates", force: :cascade do |t|
     t.string "name"
     t.string "party"
@@ -38,9 +41,9 @@ ActiveRecord::Schema.define(version: 2019_09_16_025253) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "product_id"
+    t.bigint "product_id"
     t.integer "quantity"
-    t.integer "order_id"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_025253) do
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "slug"
     t.index ["slug"], name: "index_orders_on_slug", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -83,13 +86,17 @@ ActiveRecord::Schema.define(version: 2019_09_16_025253) do
   end
 
   create_table "vote_logs", force: :cascade do |t|
-    t.integer "candidate_id"
+    t.bigint "candidate_id"
     t.string "ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["candidate_id"], name: "index_vote_logs_on_candidate_id"
     t.index ["user_id"], name: "index_vote_logs_on_user_id"
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "vote_logs", "candidates"
+  add_foreign_key "vote_logs", "users"
 end
