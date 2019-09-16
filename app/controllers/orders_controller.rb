@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_order, only: [:show, :payment]
+  before_action :find_order, only: [:show, :payment, :transaction]
 
   def index
     @orders = current_user.orders.order(created_at: :desc)
@@ -25,6 +25,28 @@ class OrdersController < ApplicationController
   end
 
   def payment
+    @token = braintree_gateway.client_token.generate
+  end
+
+  def transaction
+    if @order.may_pay?
+      result = braintree_gateway.transaction.sale(
+        amount: @order.total_price,
+        payment_method_nonce: params[:payment_method_nonce],
+        options: {
+          submit_for_settlement: true
+        }
+      )
+
+      if result.success?
+        @order.pay!
+        redirect_to orders_path, notice: '刷卡已完成'
+      else
+        redirect_to orders_path, notice: '付款出現錯誤'
+      end
+    else
+      redirect_to orders_path, notice: '訂單已完成付款'
+    end
   end
 
   private
@@ -34,5 +56,14 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:recipient, :phone, :address, :note)
+  end
+
+  def braintree_gateway
+    Braintree::Gateway.new(
+      environment: :sandbox,
+      merchant_id: ENV["braintree_merchant_id"],
+      public_key: ENV["braintree_public_key"],
+      private_key: ENV["braintree_private_key"]
+    )
   end
 end

@@ -1,3 +1,16 @@
-<h1>付款</h1>
+<h1>付款（金額：<%= @order.total_price %>）</h1>
 
-<%= @order.total_price %>
+<hr>
+
+<%= form_with(url: transaction_order_path(@order), local: true) do |form| %>
+  <div id="payment-form"></div>
+  <input type="submit" value="付款" class="btn btn-lg btn-danger">
+<% end %>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
+<script>
+  var clientToken = "<%= @token %>";
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+  });
+</script>

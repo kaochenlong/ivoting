@@ -62,6 +62,8 @@ GEM
     bootstrap4-kaminari-views (1.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    braintree (2.98.0)
+      builder (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.29.0)
@@ -103,6 +105,8 @@ GEM
     faker (2.3.0)
       i18n (~> 1.6.0)
     ffi (1.11.1)
+    figaro (1.1.1)
+      thor (~> 0.14)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     globalid (0.4.2)
@@ -276,6 +280,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   bootstrap4-kaminari-views (~> 1.0, >= 1.0.1)
+  braintree (~> 2.98.0)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
@@ -283,6 +288,7 @@ DEPENDENCIES
   devise (~> 4.7)
   factory_bot_rails (~> 5.0, >= 5.0.2)
   faker (~> 2.1, >= 2.1.2)
+  figaro (~> 1.1, >= 1.1.1)
   friendly_id (~> 5.2, >= 5.2.5)
   hirb-unicode (~> 0.0.5)
   jbuilder (~> 2.5)

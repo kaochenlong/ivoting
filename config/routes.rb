@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  post '/', to: 'products#index'
   resources :products do
     member do
       put :add_to_cart
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create] do
     member do
       get :payment
+      post :transaction
     end
   end
 
