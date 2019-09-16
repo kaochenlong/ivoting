@@ -23,12 +23,12 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem "braintree", "~> 2.98.0"
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'faker', '~> 2.1', '>= 2.1.2'
+gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'hirb-unicode', '~> 0.0.5'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
   gem 'timecop', '~> 0.9.1'
 end
 
