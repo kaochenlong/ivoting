@@ -12,7 +12,7 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= order.id %></td>
+      <td><%= order.slug.upcase %></td>
       <td><%= order.created_at %></td>
       <td><%= order.status %></td>
       <td>

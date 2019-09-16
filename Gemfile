@@ -18,6 +18,7 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap4-kaminari-views', '~> 1.0', '>= 1.0.1'
 gem 'simple_form', '~> 4.1'
 gem 'aasm', '~> 5.0', '>= 5.0.6'
+gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

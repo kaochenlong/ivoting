@@ -5,6 +5,10 @@ class OrdersController < ApplicationController
     @orders = current_user.orders.order(created_at: :desc)
   end
 
+  def show
+    @order = current_user.orders.friendly.find(params[:id])
+  end
+
   def create
     @order = current_user.orders.build(order_params)
 
