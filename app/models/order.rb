@@ -6,6 +6,10 @@ class Order < ApplicationRecord
   belongs_to :user
   validates :recipient, :phone, :address, presence: true
 
+  def total_price
+    order_items.reduce(0) { |sum, item| sum + item.total_price }
+  end
+
   include AASM
   aasm(column: 'status', no_direct_assignment: true) do
     state :pending, initial: true
@@ -30,9 +34,15 @@ class Order < ApplicationRecord
 
   private
   def order_generator
-    year = Time.now.year
-    month = Time.now.month
-    day = Time.now.day
+    if persisted?
+      year = created_at.year
+      month = created_at.month
+      day = created_at.day
+    else
+      year = Time.now.year
+      month = Time.now.month
+      day = Time.now.day
+    end
     serial = [*'A'..'Z', *0..9].sample(8).join
 
     "%0d%02d%02d-%s" % [year, month, day, serial]

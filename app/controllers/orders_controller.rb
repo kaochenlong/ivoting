@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_order, only: [:show, :payment]
 
   def index
     @orders = current_user.orders.order(created_at: :desc)
   end
 
   def show
-    @order = current_user.orders.friendly.find(params[:id])
   end
 
   def create
@@ -28,6 +28,9 @@ class OrdersController < ApplicationController
   end
 
   private
+  def find_order
+    @order = current_user.orders.friendly.find(params[:id])
+  end
 
   def order_params
     params.require(:order).permit(:recipient, :phone, :address, :note)
