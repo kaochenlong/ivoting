@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    OrderMailer.with(order: @order).confirm_email.deliver_later
   end
 
   def create
@@ -42,6 +41,8 @@ class OrdersController < ApplicationController
       if result.success?
         @order.pay!
         # 寄 email
+        # OrderMailer.with(order: @order).confirm_email.deliver_later
+        PostmanJob.set(wait: 10.seconds).perform_later(@order)
 
         redirect_to orders_path, notice: '刷卡已完成'
       else
