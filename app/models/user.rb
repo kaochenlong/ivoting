@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :vote_logs
   has_many :candidates, through: :vote_logs
   has_many :orders
+  has_one_attached :avatar
 end

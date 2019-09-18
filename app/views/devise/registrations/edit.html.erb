@@ -4,6 +4,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= avatar_tag(current_user) %>
+    <%= f.input :avatar, label: '照片' %>
+
     <div class="row">
       <div class="col-4"><%= f.input :name, label: '名字' %></div>
       <div class="col-8"><%= f.input :email, required: true %></div>

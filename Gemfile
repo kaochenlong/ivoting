@@ -24,6 +24,7 @@ gem "braintree", "~> 2.98.0"
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'faker', '~> 2.1', '>= 2.1.2'
 gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
+gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
