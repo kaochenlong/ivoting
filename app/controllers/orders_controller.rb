@@ -7,8 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    # OrderMailer.confirm_email(@order).deliver_later
-    # OrderMailer.with(order: @order).confirm_email.deliver_later
+    OrderMailer.with(order: @order).confirm_email.deliver_later
   end
 
   def create

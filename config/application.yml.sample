@@ -1,3 +1,7 @@
 braintree_merchant_id: "your-merchant-id"
 braintree_public_key: "your-public-key"
 braintree_private_key: "your-private-key"
+
+smtp_address: 'your-smtp-server'
+smtp_username: 'your-username'
+smtp_password: 'your-password'
