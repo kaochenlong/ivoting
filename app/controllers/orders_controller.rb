@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    # OrderMailer.confirm_email(@order).deliver_later
+    # OrderMailer.with(order: @order).confirm_email.deliver_later
   end
 
   def create
@@ -40,6 +42,8 @@ class OrdersController < ApplicationController
 
       if result.success?
         @order.pay!
+        # 寄 email
+
         redirect_to orders_path, notice: '刷卡已完成'
       else
         redirect_to orders_path, notice: '付款出現錯誤'

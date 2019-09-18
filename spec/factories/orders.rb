@@ -4,7 +4,7 @@ FactoryBot.define do
     note { Faker::Lorem.sentences }
     phone { Faker::PhoneNumber.cell_phone }
     address { Faker::Address.full_address }
-    status { "pending" }
+    # status { "pending" }
     user { create(:user) }
 
     trait :invalid do

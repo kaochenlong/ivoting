@@ -10,6 +10,8 @@ class Order < ApplicationRecord
     order_items.reduce(0) { |sum, item| sum + item.total_price }
   end
 
+  delegate :email, to: :user
+
   include AASM
   aasm(column: 'status', no_direct_assignment: true) do
     state :pending, initial: true
