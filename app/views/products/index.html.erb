@@ -5,6 +5,7 @@
   <li>
     <%= link_to product.name, product %> | <%= product.price %>元
     <%= link_to "加入購物車", add_to_cart_product_path(product), class: 'btn btn-danger btn-sm', method: 'put' %>
+    <%= link_to "編輯", edit_product_path(product), class: 'btn btn-success btn-sm' %>
   </li>
   <% end %>
 </ul>

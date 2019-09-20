@@ -1,11 +1,22 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :add_to_cart]
+  before_action :find_product, only: [:show, :add_to_cart, :edit, :update]
 
   def index
     @products = Product.all
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to products_path, notice: '商品更新完成'
+    else
+      render :edit
+    end
   end
 
   def add_to_cart
@@ -18,5 +29,9 @@ class ProductsController < ApplicationController
   private
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price, :description, :is_available)
   end
 end
