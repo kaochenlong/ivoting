@@ -5,6 +5,12 @@
     <%= form.input :party, label: '政黨' %>
     <%= form.input :age, label: '年紀' %>
     <%= form.input :policy, label: '政見' %>
+
+    <hr>
+    <%= form.simple_fields_for :signature do |signature_form| %>
+      <%= signature_form.input :content, label: '簽名檔' %>
+    <% end %>
+
     <%= form.submit class: 'btn btn-success btn-lg' %>
   </div>
 <% end %>

@@ -23,6 +23,7 @@ class CandidatesController < ApplicationController
   end
 
   def edit
+    @candidate.build_signature if @candidate.signature.nil?
   end
 
   def update
@@ -67,6 +68,13 @@ class CandidatesController < ApplicationController
 
   # Strong Parameters
   def candidate_params
-    params.require(:candidate).permit(:name, :age, :policy, :party, :degree)
+    params.require(:candidate).permit(
+      :name,
+      :age,
+      :policy,
+      :party,
+      :degree,
+      signature_attributes: [:id, :content, :active]
+    )
   end
 end
