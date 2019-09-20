@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # @product.skus.build if @product.skus.empty?
   end
 
   def update
