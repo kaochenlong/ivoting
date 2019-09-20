@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_055330) do
+ActiveRecord::Schema.define(version: 2019_09_20_065236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(version: 2019_09_20_055330) do
     t.index ["candidate_id"], name: "index_signatures_on_candidate_id"
   end
 
+  create_table "skus", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "quantity", default: 0
+    t.string "spec"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_skus_on_product_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -130,6 +139,7 @@ ActiveRecord::Schema.define(version: 2019_09_20_055330) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "signatures", "candidates"
+  add_foreign_key "skus", "products"
   add_foreign_key "vote_logs", "candidates"
   add_foreign_key "vote_logs", "users"
 end

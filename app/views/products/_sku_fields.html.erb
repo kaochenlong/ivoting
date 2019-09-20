@@ -1,0 +1,13 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-8">
+      <%= f.input :spec, label: false, placeholder: '規格：XL、L、大、中、小' %>
+    </div>
+    <div class="col-3">
+      <%= f.input :quantity, label: false, placeholder: '數量' %>
+    </div>
+    <div class="col-1">
+      <%= link_to_remove_association "X", f, class: 'btn btn-sm btn-danger' %>
+    </div>
+  </div>
+</div>

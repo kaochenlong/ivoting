@@ -3,5 +3,16 @@
   <%= form.input :price %>
   <%= form.input :description %>
   <%= form.input :is_available %>
-  <%= form.submit %>
+  <hr>
+  <h2>
+    庫存
+  </h2>
+  <%= form.simple_fields_for :skus do |sku_form| %>
+    <%= render 'sku_fields', f: sku_form %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association "新增庫存", form, :skus, class: 'btn btn-sm btn-danger' %>
+  </div>
+  <hr>
+  <%= form.submit class: 'btn btn-success' %>
 <% end %>

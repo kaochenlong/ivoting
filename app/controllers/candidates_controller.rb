@@ -23,7 +23,7 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-    @candidate.build_signature if @candidate.signature.nil?
+    @candidate.build_signature if @candidate.signature
   end
 
   def update

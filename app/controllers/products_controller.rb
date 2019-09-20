@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # @product.skus.build if @product.skus.empty?
   end
 
   def update
@@ -32,6 +33,12 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :description, :is_available)
+    params.require(:product).permit(
+      :name,
+      :price,
+      :description,
+      :is_available,
+      skus_attributes: [:id, :spec, :quantity, :_destroy]
+    )
   end
 end
