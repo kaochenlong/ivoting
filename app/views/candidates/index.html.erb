@@ -32,4 +32,4 @@
   </tbody>
 </table>
 
-<%= link_to '新增候選人', new_candidate_path, class: 'btn btn-primary btn-lg' if policy(@candidates).new? %>
+<%= link_to '新增候選人', new_candidate_path, class: 'btn btn-primary btn-lg' if user_signed_in? && policy(@candidates).new? %>
