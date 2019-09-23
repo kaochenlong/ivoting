@@ -1,4 +1,5 @@
 class Cart
+  include Taxable
   attr_reader :items
 
   def initialize(items = [])

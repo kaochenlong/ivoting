@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  include Taxable
   extend FriendlyId
   friendly_id :order_generator, use: :slugged
 
