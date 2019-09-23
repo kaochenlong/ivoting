@@ -27,6 +27,7 @@ gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'cocoon', '~> 1.2', '>= 1.2.14'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'pundit', '~> 2.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

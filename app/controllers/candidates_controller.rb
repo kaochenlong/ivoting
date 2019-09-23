@@ -1,5 +1,6 @@
 class CandidatesController < ApplicationController
   before_action :find_candidate, only: [:show, :edit, :update, :destroy, :vote, :log]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @candidates = Candidate.order(vote: :desc).page(params[:page])
@@ -10,6 +11,7 @@ class CandidatesController < ApplicationController
 
   def new
     @candidate = Candidate.new
+    authorize @candidate
   end
 
   def create
@@ -23,7 +25,8 @@ class CandidatesController < ApplicationController
   end
 
   def edit
-    @candidate.build_signature if @candidate.signature
+    authorize @candidate
+    @candidate.build_signature if @candidate.signature.nil?
   end
 
   def update
@@ -35,6 +38,7 @@ class CandidatesController < ApplicationController
   end
 
   def destroy
+    authorize @candidate
     @candidate.destroy
     redirect_to root_path, notice: "資料刪除成功!"
   end
