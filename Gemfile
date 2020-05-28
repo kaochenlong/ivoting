@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'kaminari', '~> 1.2'
 gem 'bootstrap4-kaminari-views', '~> 1.0', '>= 1.0.1'
 gem "simple_form", ">= 5.0.0"
 gem 'aasm', '~> 5.0', '>= 5.0.6'
